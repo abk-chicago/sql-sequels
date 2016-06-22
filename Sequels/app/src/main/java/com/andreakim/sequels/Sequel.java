@@ -7,7 +7,9 @@ public class Sequel {
     public int id;
     public String name;
 
-    public Sequel( int id, String name) {
+    //use rt-click, Generate to auto-gernerate getters and setters, and constructor
+
+    public Sequel(int id, String name) {
         this.name = name;
         this.id = id;
     }
@@ -29,3 +31,4 @@ public class Sequel {
         this.name = name;
     }
 }
+
