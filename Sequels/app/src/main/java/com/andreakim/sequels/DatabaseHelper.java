@@ -1,5 +1,6 @@
 package com.andreakim.sequels;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
@@ -35,10 +36,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // NOT an @Override
     public void seedDatabase() {
-
+        insertSequel(1,"Empire Strikes Back");
+        insertSequel(2,"Toy Story 2");
+        insertSequel(3,"Raiders of the Lost Arc");
+        insertSequel(4,"Halloween 2");
+        insertSequel(5,"Mulan 2");
+        insertSequel(6,"Taken 2");
+        insertSequel(7,"Jaws 2");
+        insertSequel(8,"Deathwish 2");
+        insertSequel(9,"Zoolander 2");
+        insertSequel(10,"Die Harder with a Vengance");
+        //sample data
     }
 
     public void insertSequel(int id, String name) {
+        //insert into table_name values (1, "blah");
+        SQLiteDatabase db = getReadableDatabase();
+        //special type of HashMap for Database values, below
+        ContentValues values = new ContentValues();
+        values.put("id",id);
+        values.put("name",name);
+        // PRO-TIP: GREAT PLACE TO PUT IN A BREAK POINT for debugging
+        db.insert("sequels", null, values); //insert into table, null, values
 
     }
 
