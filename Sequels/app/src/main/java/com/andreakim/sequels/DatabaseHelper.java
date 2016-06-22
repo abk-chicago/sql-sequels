@@ -61,4 +61,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public Sequel getSequel(int id) {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] projection = new String[]{"id","name"};  //columns to select
+        String selection = "id = ?";         //similar to a where clause; defining a selection
+        String[] selesctionArguments = new String[] { Integer.toString(id) };  // (or use string.value of)
+        
+
+        Sequel movie = new Sequel();
+        return movie;
+    }
+    public void getSequels() {
+
+
+    }
+
+    public void removeSequel() {
+
+
+    }
+
+
+
+
+
+
+
+
 }
