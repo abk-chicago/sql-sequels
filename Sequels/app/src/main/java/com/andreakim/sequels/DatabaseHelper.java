@@ -2,6 +2,8 @@ package com.andreakim.sequels;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -66,9 +68,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] projection = new String[]{"id","name"};  //columns to select
         String selection = "id = ?";         //similar to a where clause; defining a selection
         String[] selesctionArguments = new String[] { Integer.toString(id) };  // (or use string.value of)
-        
 
-        Sequel movie = new Sequel();
+
+        //create user interface cursor
+        Cursor c = db.query("sequels",projection, selection, selesctionArguments, null, null, null, null);
+
+        c.moveToFirst();
+
+        int sequelId = Integer.parseInt(c.getString(c.getColumnIndex("id")));   //<-- convertung string to int
+        String sequelName = c.getString(c.getColumnIndex("name"));
+
+        Sequel movie = new Sequel(sequelId, sequelName);
         return movie;
     }
     public void getSequels() {
